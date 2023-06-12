@@ -1,12 +1,11 @@
 {
-  "name": "ai-tistic-tales",
+  "name": "ai-tastic-tales",
   "version": "0.0.0",
-  "description": "Template for the AI-tistic Tales project",
+  "description": "Template for the AI-tastic Tales project",
   "license": "CC BY-NC-SA",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "start:test": "MONGODB_URL='mongodb://0.0.0.0/aitistic_tales_test' npm start",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -16,13 +15,11 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "dotenv": "^16.1.3",
     "express": "~4.16.1",
     "express-session": "^1.17.2",
     "hbs": "^4.1.0",
     "http-errors": "~1.6.3",
     "jest-fetch-mock": "^3.0.3",
-    "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15",
