@@ -163,7 +163,17 @@ You should now be able to interact with the application on your local machine.
 ------
 ------
 ## **7. TODO's**
+- Allow users to describe their own characters: Consider implementing a feature that allows users to provide their own character descriptions instead of relying solely on popular fictional characters. This could provide more flexibility and personalization for users, although it may require using different image generation models/APIs to ensure consistent character representations across different images.
 
+- Implement a database for saving and viewing stories: Set up a database to enable users to save their generated stories and view them later. This would enhance the user experience and allow for easy access to previously generated content.
+
+- Implement a voting system and popular stories section: Create a feature that allows users to vote on stories and display the most popular ones. This can add a social aspect to the application and encourage engagement among users.
+
+- Separate refresh option for chapters and images: Provide the ability for users to refresh the chapter and image separately. This would give users more control over the storytelling process and allow them to explore different possibilities for each element.
+
+- Optimize the prompt bank: Analyze the prompt bank to identify opportunities for reducing code repetition across different characters. Consider consolidating common prompts that can be shared among multiple characters, improving efficiency and maintainability.
+
+- Order prompts based on importance: Experiment with ordering the prompts based on their importance. Initial results have shown that better images can be achieved by prioritizing certain prompts. Adjusting the prompt order can potentially enhance the overall quality of the generated content.
 
 ------
 ------
