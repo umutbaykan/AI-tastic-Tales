@@ -17,7 +17,7 @@
 ------
 ## **1. Project Description**
 
-AI-Tastic Tales is the culmination of a group project developed during the Makers Academy software development bootcamp. It is a full-stack web application that leverages the power of ChatGPT and Stable Diffusion to create captivating short stories. The app allows users to craft their own unique narratives, chapter by chapter, based on their prompts.
+AI-Tastic Tales is the final group project developed during the Makers Academy software development bootcamp. It is a full-stack web application that leverages the power of ChatGPT and Stable Diffusion to create captivating short stories. The app allows users to craft their own unique narratives, chapter by chapter, based on their prompts.
 
 Each chapter of the story presents the user with engaging paragraphs of text and accompanying images that align with the story's context. Users actively shape the narrative by providing prompts, and the application dynamically generates new stories and images, creating a seamless and continuous story.
 
@@ -42,15 +42,15 @@ Click [here](https://youtu.be/65ZOm3kqkyo?t=87) for a run through video of the a
 
 ## **3. Technologies**
 
-- <img src="https://simpleicons.org/icons/express.svg" width="12" height="12">  [Express](https://expressjs.com/)
-- <img src="https://simpleicons.org/icons/react.svg" width="12" height="12">  [React](https://react.dev/)
-- <img src="https://simpleicons.org/icons/nodedotjs.svg" width="12" height="12">  [Node](https://nodejs.org/en)
+- <img src="https://simpleicons.org/icons/javascript.svg" alt="javascript" width="40" height="40"/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- <img src="https://simpleicons.org/icons/express.svg" width="40" height="40">  [Express](https://expressjs.com/)
+- <img src="https://simpleicons.org/icons/react.svg" width="40" height="40">  [React](https://react.dev/)
+- <img src="https://simpleicons.org/icons/nodedotjs.svg" width="40" height="40">  [Node](https://nodejs.org/en)
 
 Additional technologies:
 
-- <img src="https://simpleicons.org/icons/jest.svg" width="12" height="12">  [Jest](https://jestjs.io/)
-- <img src="https://simpleicons.org/icons/cypress.svg" width="12" height="12">  [Cypress](https://www.cypress.io/)
-- <img src="https://simpleicons.org/icons/nodemon.svg" width="12" height="12">  [Nodemon](https://www.npmjs.com/package/nodemon)
+- <img src="https://simpleicons.org/icons/jest.svg" width="40" height="40">  [Jest](https://jestjs.io/)
+- <img src="https://simpleicons.org/icons/cypress.svg" width="40" height="40">  [Cypress](https://www.cypress.io/)
 
 ------
 ------
@@ -84,7 +84,7 @@ Based on the user's choice on the frontend, a new cycle can be initiated. For ex
 Each chapter is sent to the frontend for the user to view, and the data is not stored. Currently, there is no implemented database, but this could be added in the future to allow users to store and review their generated stories.
 
 ### Frontend:
-The frontend enables users to configure the theme, style, characters, and context of the story. These configurations are sent as JSON to the backend to start the first cycle, and users can view the rendered image and chapters once cycle is completed.
+The frontend enables users to configure the theme, style, characters, and context of the story. The available options are received from the backend server through an API call. Users selections are then sent as JSON to the backend to start the first cycle, and users can view the rendered image and chapters once cycle is completed.
 
 At the end of each cycle, users have a few choices:
 1) They can provide a different prompt to steer the story. In this case, the prompt configuration is updated and sent back to the backend along with the existing chapters to provide context.
