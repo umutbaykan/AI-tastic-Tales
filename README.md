@@ -4,38 +4,38 @@
    
 # **Table of Contents**
 
-1. [Project Description](https://github.com/umutbaykan/AI-tastic-tales#project-description)
-2. [Features](https://github.com/umutbaykan/AI-tastic-tales#features)
-3. [Technologies](https://github.com/umutbaykan/AI-tastic-tales#technologies)
-4. [How Does It Work](https://github.com/umutbaykan/AI-tastic-tales#how-does-it-work)
-5. [Installation](https://github.com/umutbaykan/AI-tastic-tales#installation)
-6. [Getting Started](https://github.com/umutbaykan/AI-tastic-tales#getting-started)
-7. [TODO's](https://github.com/umutbaykan/AI-tastic-tales#todos)
-8. [Authors](https://github.com/umutbaykan/AI-tastic-tales#authors)
+1. [Project Description](#1-project-description)
+2. [Features](#2-features)
+3. [Technologies](#3-technologies)
+4. [How Does It Work](#4-how-does-it-work)
+5. [Installation](#5-installation)
+6. [Getting Started](#6-getting-started)
+7. [TODO's](#7-todos)
+8. [Authors](#8-authors)
 
 ------
 ------
 ## **1. Project Description**
 
-AI-Tastic Tales is the final group project developed during the Makers Academy software development bootcamp. It is a full-stack web application that leverages the power of ChatGPT and Stable Diffusion to create captivating short stories. The app allows users to craft their own unique narratives, chapter by chapter, based on their prompts.
+AI-Tastic Tales is the final group project developed during the Makers Academy software development course. It is a full-stack web application that leverages the power of ChatGPT and Stable Diffusion to create captivating short stories. The app allows users to craft their own unique narratives, chapter by chapter, based on their prompts.
 
 Each chapter of the story presents the user with engaging paragraphs of text and accompanying images that align with the story's context. Users actively shape the narrative by providing prompts, and the application dynamically generates new stories and images, creating a seamless and continuous story.
 
-The project embraced Agile methodologies, employing daily standups and end-of-day retrospectives to cultivate a collaborative and communicative atmosphere within the team. By adhering to these practices, team members remained informed about the project's structure and advancements, enabling efficient progress. The development approach followed a step-by-step methodology, initially focusing on delivering a minimum viable product (MVP) and gradually expanding functionality block by block. Any obstacles encountered along the way were addressed as a team and resources reallocated accordingly to ensure smooth development.
+The project embraced Agile methodologies, employing daily standups and end-of-day retrospectives to cultivate a collaborative and communicative atmosphere within the team. By adhering to these practices, team members remained informed about the project's structure and advancements, enabling efficient progress. The development approach followed a step-by-step methodology, initially focusing on delivering a minimum viable product (MVP) and gradually expanding functionality block by block. Any obstacles encountered along the way were addressed as a team and resources were reallocated accordingly to ensure smooth development.
 
-Full video presentation made on the demo day can be found [here](https://youtu.be/65ZOm3kqkyo).
+The full video presentation made on the demo day can be found [here](https://youtu.be/65ZOm3kqkyo).
 
 ------
 ------
 ## **2. Features**
 
-Click [here](https://youtu.be/65ZOm3kqkyo?t=87) for a run through video of the application.
+Click [here](https://youtu.be/65ZOm3kqkyo?t=87) for a run-through video of the application.
 
-- User Prompts: Users have the ability to provide creative inputs such as characters, settings, and themes to shape their story.
+- User Prompts: Users have the ability to provide creative inputs such as characters, settings, and themes to shape their stories.
 - Chapter Generation: The ChatGPT API generates story chapters by seamlessly incorporating user prompts and choices.
 - API Integration: The Stable Diffusion API generates images based on the story prompts, providing visual context for each chapter.
 - Iterative Storytelling: Users can actively participate in the storytelling process by providing feedback and ideas for each chapter. The subsequent generated chapters take their input into account.
-- Export: Users can view the narrative they have experienced thus far and have the option to export it in different formats.
+- Export: Users can view the narrative they have experienced thus far and have the option to export it to different formats.
 
 ------
 ------
@@ -77,21 +77,21 @@ Below is a breakdown of the filing structure of the application:
 ```
 
 ### Backend:
-The backend server acts as an intermediary between the frontend and the GPT & SD clients. It receives information from the frontend and combines it with the prompt bank based on user choices. The server then sends simultaneous API calls to the clients. The prompt parameters greatly affect the quality of the generated image, so generating new prompts is necessary. The whole process of receiving prompts, populating them, sending them as part of API calls and passing on the results to frontend is referred to as a cycle.
+The backend server acts as an intermediary between the frontend and the GPT & SD clients. It parses user choices from the frontend and populates them with pre-written prompts through the prompt bank. Prompts used in API calls greatly affect the quality of the generated image, so this process produces much better results for the user. The server then sends simultaneous API calls to the two clients with the final prompts. The whole process of parsing user choices, populating them, sending them as part of API calls and passing on the results to frontend is referred to as a cycle.
 
-Based on the user's choice on the frontend, a new cycle can be initiated. For example, if the user decides to steer the story, their new input updates the prompt parameters and triggers another API call. To maintain narrative continuity, the existing chapters are included in the API call to Chat GPT.
+Based on the user's choice on the frontend, a new cycle can be initiated. For example, if the user decides to steer the story, their new input updates the prompt parameters and triggers another API call. To maintain narrative continuity in the story, the existing chapters are included in the API call to Chat GPT.
 
 Each chapter is sent to the frontend for the user to view, and the data is not stored. Currently, there is no implemented database, but this could be added in the future to allow users to store and review their generated stories.
 
 ### Frontend:
-The frontend enables users to configure the theme, style, characters, and context of the story. The available options are received from the backend server through an API call. Users selections are then sent as JSON to the backend to start the first cycle, and users can view the rendered image and chapters once cycle is completed.
+The frontend enables users to configure the theme, style, characters, and context of the story. The available options are sent to the backend server through an API call. User selections are passed on as a JSON object to the backend to start the first cycle, and users can view the rendered image and chapters once the cycle is completed.
 
 At the end of each cycle, users have a few choices:
 1) They can provide a different prompt to steer the story. In this case, the prompt configuration is updated and sent back to the backend along with the existing chapters to provide context.
-2) Users can choose to determine what happens next and request Chat GPT to generate the subsequent chapter based on the existing context. This prompts a change in the prompt to solicit a new chapter from Chat GPT, utilizing the existing chapters as contextual information.
-3) At any point, users can choose to refresh the story, in which case the API calls are made with the existing configurations to obtain different results.
+2) Users can request Chat GPT to generate the subsequent chapter based on the existing context. This changes the input prompt to ask for a new chapter from Chat GPT based on the existing chapters, which are passed on alongside the API call as contextual information.
+3) At any point, users can choose to refresh the story, in which case the API calls are made with the existing configurations again to obtain different results.
 
-Information received from the backend is stored in the local storage. At the end of each cycle, unless the user chooses to refresh the story, the new chapter and image link are added to the local storage. If users want to review the story they have read so far, they can navigate to the "story-so-far" section, where the component accesses the local storage information and renders a continuous narrative for the user to see.
+Information received from the backend is stored in the client's local storage. At the end of each cycle, unless the user chooses to refresh the story, the new chapter and image link are added to the local storage. If users want to review the story they have read so far, they can navigate to the "story-so-far" section, where the component accesses the local storage information and renders a continuous narrative for the user to see.
 
 ------
 ------
@@ -136,7 +136,7 @@ To run the tests, you can use the following commands:
 
     # Alternatively, if you want to test through the browser
     npm run test:open
-    # This wil open a new browser where you can run each test individually.
+    # This will open a new browser where you can run each test individually.
     
 ------
 ------
@@ -163,7 +163,7 @@ You should now be able to interact with the application on your local machine.
 ------
 ------
 ## **7. TODO's**
-- Allow users to describe their own characters: Consider implementing a feature that allows users to provide their own character descriptions instead of relying solely on popular fictional characters. This could provide more flexibility and personalization for users, although it may require using different image generation models/APIs to ensure consistent character representations across different images.
+- Allow users to describe their characters: Consider implementing a feature that allows users to provide their character descriptions instead of relying solely on popular fictional characters. This could provide more flexibility and personalization for users, although it may require using different image generation models/APIs to ensure consistent character representations across different images.
 
 - Implement a database for saving and viewing stories: Set up a database to enable users to save their generated stories and view them later. This would enhance the user experience and allow for easy access to previously generated content.
 
@@ -188,7 +188,7 @@ Each valued member of AI-Tastic Tales that contributed to this project:
 <img src="https://avatars.githubusercontent.com/u/121251204?v=4" width="30" height="30"> [Umut Baykan](https://github.com/umutbaykan)
 <img src="https://avatars.githubusercontent.com/u/124444624?v=4" width="30" height="30"> [Daniel John](https://github.com/djohn06)
 
-Honarable Mention:
+Honourable Mention:
 
 <img src="https://avatars.githubusercontent.com/u/32678879?v=4" width="30" height="30"> [Sunaina Rishi](https://github.com/SunainaR)
 
